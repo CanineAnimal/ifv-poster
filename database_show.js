@@ -13,5 +13,5 @@ if(document.querySelector('#DISPATCH')){
   document.querySelector('#DISPATCH').href = 'https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch;
 }
 if(document.querySelector('#TG_VICTIMS')){
-  document.querySelector('#TG_VICTIMS').href = dataIFV.tg_victims;
+  document.querySelector('#TG_VICTIMS').innerHTML = dataIFV.tg_victims;
 }

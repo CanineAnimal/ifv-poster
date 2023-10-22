@@ -5,7 +5,7 @@ var IFVtext;
 
 function postIFV(){
 	var request = new XMLHttpRequest();
-	request.open('GET', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/', false);
+	request.open('GET', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/latest', false);
 	request.send(); 
 	dataIFV = JSON.parse(request.responseText).record;
 	IFVtext = `[background-block=#265780][hr][center][floatleft][img]https://forum.thenorthpacific.org/images/dispatches/tnp_header.png[/img][/floatleft][size=200][color=#dfecff]` + (function(){if(dataIFV.council == 'SC'){return 'Security Council '}else{return 'General Assembly '}})() + `Vote Recommendation[/color][/size][/center][hr][center][b][size=125] [/size][color=#dfecff]Part of the[/color] [url=/page=dispatch/id=724191][color=#94c248]Information for WA Voters[/color][/url] [color=#dfecff]program[/color][size=125] [/size][/b][/center][hr][/background-block]

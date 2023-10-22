@@ -12,6 +12,7 @@ dataIFV = JSON.parse(request.responseText).record;
 document.querySelector('.TITLE').innerHTML = dataIFV.title;
 document.querySelector('#IFV').value = dataIFV.IFV;
 document.querySelector('#THREAD').href = dataIFV.thread;
+document.querySelector('#THREAD').innerHTML = 'Link';
 document.querySelector('.COUNCIL').innerHTML = dataIFV.council;
 document.querySelector('.REC').innerHTML = dataIFV.rec;
 

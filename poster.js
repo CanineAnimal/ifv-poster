@@ -4,23 +4,7 @@ var request3;
 var IFVtext;
 var dataIFV;
 
-var request = new XMLHttpRequest();
-request.open('GET', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/latest', false);
-request.send(); 
-dataIFV = JSON.parse(request.responseText).record;
-
-document.querySelector('.TITLE').innerHTML = dataIFV.title;
-document.querySelector('#IFV').value = dataIFV.IFV;
-document.querySelector('#THREAD').href = dataIFV.thread;
-document.querySelector('#THREAD').innerHTML = 'Link';
-document.querySelector('.COUNCIL').innerHTML = dataIFV.council;
-document.querySelector('.REC').innerHTML = dataIFV.rec;
-
 function postIFV(){
-	request = new XMLHttpRequest();
-	request.open('GET', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/latest', false);
-	request.send(); 
-	dataIFV = JSON.parse(request.responseText).record;
 	IFVtext = `[background-block=#265780][hr][center][floatleft][img]https://forum.thenorthpacific.org/images/dispatches/tnp_header.png[/img][/floatleft][size=200][color=#dfecff]` + (function(){if(dataIFV.council == 'SC'){return 'Security Council '}else{return 'General Assembly '}})() + `Vote Recommendation[/color][/size][/center][hr][center][b][size=125] [/size][color=#dfecff]Part of the[/color] [url=/page=dispatch/id=724191][color=#94c248]Information for WA Voters[/color][/url] [color=#dfecff]program[/color][size=125] [/size][/b][/center][hr][/background-block]
 [box][size=150][color=#265780]Resolution at Vote: [url=/page=` + dataIFV.council + `]` + dataIFV.title + `[/url][/color][/size]
 [size=150][color=#265780]Vote Recommendation:[/color] [b]` + dataIFV.rec + `[/b][/size][/box]

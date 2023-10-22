@@ -10,5 +10,5 @@ document.querySelector('#THREAD').innerHTML = 'Link';
 document.querySelector('.COUNCIL').innerHTML = dataIFV.council;
 document.querySelector('.REC').innerHTML = dataIFV.rec;
 if(document.querySelector('#DISPATCH')){
-  document.querySelector('#DISPATCH') = dataIFV.dispatch;
+  document.querySelector('#DISPATCH').href = 'https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch;
 }

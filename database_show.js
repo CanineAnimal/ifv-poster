@@ -9,6 +9,6 @@ document.querySelector('#THREAD').href = dataIFV.thread;
 document.querySelector('#THREAD').innerHTML = 'Link';
 document.querySelector('.COUNCIL').innerHTML = dataIFV.council;
 document.querySelector('.REC').innerHTML = dataIFV.rec;
-if(document.querySelector('#THREAD')){
-  document.querySelector('#THREAD') = dataIFV.dispatch;
+if(document.querySelector('#DISPATCH')){
+  document.querySelector('#DISPATCH') = dataIFV.dispatch;
 }

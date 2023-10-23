@@ -34,7 +34,7 @@ function telegram(){
 	if(request2.status != 200){
 		request3 = new XMLHttpRequest();
 		request3.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=TNP Information for Voters&c=dispatch&dispatch=edit&title=SC Information for WA Voters Compilation&id=1947418&text=' + newCode + '&category=3&subcategory=385&mode=execute&token=' + request2.responseXML.querySelector('SUCCESS').innerHTML, false);
-		request3.setRequestHeader('X-Pin', request.getResponseHeader('X-Pin'));
+		request3.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
 		while((new Date()).getTime() < originalTime + 650){};
 		var originalTime = (new Date()).getTime();
 		request3.send();

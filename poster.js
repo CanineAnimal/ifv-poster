@@ -16,7 +16,7 @@ function postIFV(){
 [background-block=#265780][hr][center][img]https://forum.thenorthpacific.org/images/ifv/tnp_wa_voting_footer.png[/img]
 [b][color=#dfecff]Sponsored by the[/color] [url=http://forum.thenorthpacific.org/forum/39609/][color=#94c248]Ministry of World Assembly Affairs[/color][/url] [color=#dfecff]of The North Pacific.[/color][/b][/center][hr][/background-block]`;
 	IFVtext = IFVtext.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
-	if(confirm('Confirming that a ' + dataIFV.rec + ' IFV on ' + dataIFV.title + ' will be posted? Click OK below to confirm.\n\nIf you choose to proceed, the process will take a few seconds -- do NOT close this tab.')){
+	if(confirm('Confirming that a ' + dataIFV.rec + ' IFV on ' + dataIFV.title + ' will be posted? Click OK below to confirm.\n\nIf you choose to proceed, the process will take about one minute -- do NOT close this tab.')){
 		request2 = new XMLHttpRequest();
 		request2.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=' + document.querySelector('#USER').value + '&c=dispatch&dispatch=add&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext + '&category=3&subcategory=385&mode=prepare', false);
 		request2.setRequestHeader('X-Password', document.querySelector('#PWD').value);
@@ -73,7 +73,7 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 		request5.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML, false);
 		request5.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
 		request5.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
-		while(originalTime + 14250 > (new Date()).getTime()){}; 
+		while(originalTime + 30000 > (new Date()).getTime()){}; 
 		request5.send();
 		originalTime = (new Date()).getTime();
 		

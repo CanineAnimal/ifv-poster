@@ -76,6 +76,7 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 		while(originalTime + 650 > (new Date()).getTime()){}; 
 		request5.send();
 		originalTime = (new Date()).getTime();
+		
 		if(request5.status == 200){
 			var request6 = new XMLHttpRequest();
 			request6.open('PUT', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/', false);

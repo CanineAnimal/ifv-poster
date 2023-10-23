@@ -73,7 +73,7 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 		request5.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML, false);
 		request5.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
 		request5.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
-		while(originalTime + 650 > (new Date()).getTime()){}; 
+		while(originalTime + 14250 > (new Date()).getTime()){}; 
 		request5.send();
 		originalTime = (new Date()).getTime();
 		

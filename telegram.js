@@ -13,9 +13,9 @@ function telegram(){
 	var ID;
 	oldCode;
 	if(dataIFV.council == 'GA'){
-		ID = 1947416;
-	}else if(dataIFV.council == 'SC'){
 		ID = 1947418;
+	}else if(dataIFV.council == 'SC'){
+		ID = 1947416;
 	}
 	request = new XMLHttpRequest();
 	request.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?q=dispatch;dispatchid=' + ID + '&user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value, false);

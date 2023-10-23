@@ -10,6 +10,9 @@ document.querySelector('#THREAD').innerHTML = 'Link';
 document.querySelector('.COUNCIL').innerHTML = dataIFV.council;
 document.querySelector('.REC').innerHTML = dataIFV.rec;
 if(document.querySelector('#DISPATCH')){
+  if(dataIFV.dispatch == undefined){
+    dataIFV.dispatch = prompt('Enter dispatch code: ');
+  }
   document.querySelector('#DISPATCH').href = 'https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch;
 }
 if(document.querySelector('#TG_VICTIMS')){

@@ -36,7 +36,7 @@ Greetings %NATION%,
 
 Please find below another volume of the Information for World Assembly voters program.
 
-[u]Resolution at vote:[/u] [b][url=/page=` + dataIFV.council + `]` + dataIFV.title + `[/url][/b]
+[u]Resolution at vote:[/u] [b][url=/page=` + dataIFV.council.toLowerCase() + `]` + dataIFV.title + `[/url][/b]
 [u]Forum voting thread:[/u] [b]` + dataIFV.thread + `[/b]
 [u]Vote recommendation:[/u] [b]` + dataIFV.rec + `[/b]
 

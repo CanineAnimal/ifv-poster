@@ -67,18 +67,25 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 	while(originalTime + 650 > (new Date()).getTime()){}; 
 	request4.send();
 	originalTime = (new Date()).getTime();
-	
-	var request5 = new XMLHttpRequest();
-	request5.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML, false);
-	request5.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
-	request5.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
-	while(originalTime + 650 > (new Date()).getTime()){}; 
-	request5.send();
-	originalTime = (new Date()).getTime();
-	
-	var request6 = new XMLHttpRequest();
-	request6.open('PUT', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/', false);
-	request6.setRequestHeader('Content-Type', 'application/json');
-	request6.send(JSON.stringify(dataIFV))
-	alert('Process complete. You may now close this tab.')
+
+	if(request4.status == 200){
+		var request5 = new XMLHttpRequest();
+		request5.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML, false);
+		request5.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
+		request5.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
+		while(originalTime + 650 > (new Date()).getTime()){}; 
+		request5.send();
+		originalTime = (new Date()).getTime();
+		if(request5.status == 200){
+			var request6 = new XMLHttpRequest();
+			request6.open('PUT', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/', false);
+			request6.setRequestHeader('Content-Type', 'application/json');
+			request6.send(JSON.stringify(dataIFV))
+			alert('Process complete. You may now close this tab.')
+		}else{
+			alert('Something went wrong.');
+		}
+	}else{
+		alert('Something went wrong.');
+	}
 }

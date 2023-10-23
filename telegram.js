@@ -28,7 +28,7 @@ function telegram(){
 		+ dataIFV.title + '[/td][td]'
 		+ dataIFV.rec
 		+ '[/td][td][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + ']Review[/url][/td][/tr]');
-	newCode = newCode.replaceAll(' System', ' System').replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
+	newCode = newCode.replaceAll(' System', 'System').replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
 	
 	request2 = new XMLHttpRequest();
 	request2.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=TNP Information for Voters&c=dispatch&dispatch=edit&title=' + dataIFV.council + ' Information for WA Voters Compilation&id=' + ID + '&text=' + newCode + '&category=3&subcategory=385&mode=prepare', false);

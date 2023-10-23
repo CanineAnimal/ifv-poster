@@ -18,7 +18,13 @@ function telegram(){
 	request.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?q=dispatch;dispatchid=' + ID + '&user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value, false);
 	request.send();
 	oldCode = request.responseXML.querySelector('TEXT').innerHTML.replace('<![CDATA[', '').replace(']]>', ''); 
-	var newCode = oldBBCode.replace('[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr]', '[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr][tr][td]' + (new Date()).getUTCFullYear()) + '-' + ((new Date()).GetUTCMonth() + 1) + '-' + (new Date()).GetUTCDate() + '[/td][td]' + dataIFV.title + '[/td][td]' + dataIFV.rec + '[/td][td][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + ']Review[/url][/td][/tr]');
+	var newCode = oldBBCode.replace('[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr]', '[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr][tr][td]'
+		+ (new Date()).getUTCFullYear() + '-'
+		+ ((new Date()).GetUTCMonth() + 1) + '-'
+		+ (new Date()).GetUTCDate() + '[/td][td]'
+		+ dataIFV.title + '[/td][td]'
+		+ dataIFV.rec
+		+ '[/td][td][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + ']Review[/url][/td][/tr]');
 	
 	request2 = new XMLHttpRequest();
 	request2.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=TNP Information for Voters&c=dispatch&dispatch=edit&title=GA Information for WA Voters Compilation&id=1947418&text=' + newCode + '&category=3&subcategory=385&mode=prepare', false);

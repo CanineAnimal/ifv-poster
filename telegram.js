@@ -28,23 +28,7 @@ function telegram(){
 		+ dataIFV.title + '[/td][td]'
 		+ dataIFV.rec
 		+ '[/td][td][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + ']Review[/url][/td][/tr]');
-	newCode = newCode.replaceAll(' System', 'System').replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
-	
-	request2 = new XMLHttpRequest();
-	request2.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=TNP Information for Voters&c=dispatch&dispatch=edit&title=' + dataIFV.council + ' Information for WA Voters Compilation&id=' + ID + '&text=' + newCode + '&category=3&subcategory=385&mode=prepare', false);
-	request2.setRequestHeader('X-Password', document.querySelector('#PWD').value);
-	var originalTime = (new Date()).getTime();
-	request2.send();
-	if(request2.status == 200){
-		request3 = new XMLHttpRequest();
-		request3.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=TNP Information for Voters&c=dispatch&dispatch=edit&title=' + dataIFV.council + ' Information for WA Voters Compilation&id=' + ID + '&text=' + newCode + '&category=3&subcategory=385&mode=execute&token=' + request2.responseXML.querySelector('SUCCESS').innerHTML, false);
-		request3.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
-		while((new Date()).getTime() < originalTime + 650){};
-		var originalTime = (new Date()).getTime();
-		request3.send();
 		try{
-			dispatchID = request3.responseXML.querySelector('SUCCESS').innerHTML.split('/page=dispatch/id=')[1].split('"')[0];
-			dataIFV.dispatch = dispatchID;
 			var message = `[b]MINISTRY OF WORLD ASSEMBLY AFFAIRS[/b]
 [b]Information for World Assembly Voters[/b]
 
@@ -71,8 +55,7 @@ Finally, you can [b][url=/page=dispatch/id=1079028]read here for additional info
 
 https://www.nationstates.net/page=dispatch/id=` + dataIFV.dispatch;
 			message = message.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
-			document.body.innerHTML = '<A HREF="https://www.nationstates.net/page=compose_telegram?tgto=' + dataIFV.tg_victims + '&is_recruitment_tg=true&recruittype=campaign&recruitregion=region&message=' + message + '">Telegram link.</A><BR/>For WFE Update: <CODE>[color=' + (function(){if(dataIFV.rec == 'For'){return 'green'}else if(dataIFV.rec == 'Against'){return 'red'}else{return 'orange'}})() + ']' + dataIFV.rec + '[/color][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + '][color=8B8000][u]IFV[/u][/color][/url]</CODE>';
-			
+			document.body.innerHTML = '<A HREF="https://www.nationstates.net/page=compose_telegram?tgto=' + dataIFV.tg_victims + '&is_recruitment_tg=true&recruittype=campaign&recruitregion=region&message=' + message + '">Telegram link.</A><BR/>For WFE Update: <CODE>[color=' + (function(){if(dataIFV.rec == 'For'){return 'green'}else if(dataIFV.rec == 'Against'){return 'red'}else{return 'orange'}})() + ']' + dataIFV.rec + '[/color][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + '][color=8B8000][u]IFV[/u][/color][/url]</CODE><BR/>For IFV list:<TEXTAREA READONLY>' + newCode + '</TEXTAREA>';
 		}catch(e){
 			alert('Something went wrong.');
 		}

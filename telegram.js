@@ -2,23 +2,26 @@ var request;
 var request2;
 var request3;
 
+var newCode;
+var oldCode;
+
 var ministerForumName = 'Magecastle'; // This MUST be updated when the Minister changes.
 var ministerNation = 'Magecastle Embassy Building A5';
 var delegate = 'Kaschovia' // Likewise, this MUST be updated when there is a new Delegate.
 
 function telegram(){
 	var ID;
-	var oldCode;
+	oldCode;
 	if(dataIFV.council == 'GA'){
 		ID = 1947416;
 	}else if(dataIFV.council == 'SC'){
 		ID = 1947418;
 	}
-	var request = new XMLHttpRequest();
+	request = new XMLHttpRequest();
 	request.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?q=dispatch;dispatchid=' + ID + '&user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value, false);
 	request.send();
 	oldCode = request.responseXML.querySelector('TEXT').innerHTML.replace('<![CDATA[', '').replace(']]>', ''); 
-	var newCode = oldCode.replace('[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr]', '[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr][tr][td]'
+	newCode = oldCode.replace('[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr]', '[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr][tr][td]'
 		+ (new Date()).getUTCFullYear() + '-'
 		+ ((new Date()).getUTCMonth() + 1) + '-'
 		+ (new Date()).getUTCDate() + '[/td][td]'
@@ -31,7 +34,7 @@ function telegram(){
 	request2.setRequestHeader('X-Password', document.querySelector('#PWD').value);
 	var originalTime = (new Date()).getTime();
 	request2.send();
-	if(request2.status != 200){
+	if(request2.status == 200){
 		request3 = new XMLHttpRequest();
 		request3.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=TNP Information for Voters&c=dispatch&dispatch=edit&title=SC Information for WA Voters Compilation&id=1947418&text=' + newCode + '&category=3&subcategory=385&mode=execute&token=' + request2.responseXML.querySelector('SUCCESS').innerHTML, false);
 		request3.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));

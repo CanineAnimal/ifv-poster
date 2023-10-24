@@ -38,7 +38,7 @@ function telegram(){
 	if(request2.status == 200){
 		request3 = new XMLHttpRequest();
 		request3.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
-		request2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		request3.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		request3.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
 		while((new Date()).getTime() < originalTime + 650){};
 		var originalTime = (new Date()).getTime();

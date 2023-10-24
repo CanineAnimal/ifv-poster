@@ -40,7 +40,7 @@ function telegram(){
 		request3.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
 		while((new Date()).getTime() < originalTime + 650){};
 		var originalTime = (new Date()).getTime();
-		request3.send(newCode);
+		request3.send('name=' + newCode.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22').replaceAll('"', '%22').replaceAll('"', '%22'));
 		try{
 			var message = `[b]MINISTRY OF WORLD ASSEMBLY AFFAIRS[/b]
 [b]Information for World Assembly Voters[/b]

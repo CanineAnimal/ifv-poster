@@ -31,12 +31,14 @@ function telegram(){
 	
 	request2 = new XMLHttpRequest();
 	request2.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
+	request2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Credit to Esfalsa for helping fix this
 	request2.setRequestHeader('X-Password', document.querySelector('#PWD').value);
 	var originalTime = (new Date()).getTime();
 	request2.send('user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=TNP Information for Voters&c=dispatch&dispatch=edit&title=' + dataIFV.council + ' Information for WA Voters Compilation&id=' + ID + '&category=3&subcategory=385&mode=prepare&text=' + newCode.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22').replaceAll('"', '%22').replaceAll('"', '%22'));
 	if(request2.status == 200){
 		request3 = new XMLHttpRequest();
 		request3.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
+		request2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		request3.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
 		while((new Date()).getTime() < originalTime + 650){};
 		var originalTime = (new Date()).getTime();

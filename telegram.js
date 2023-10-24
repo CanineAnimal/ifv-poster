@@ -68,7 +68,7 @@ Finally, you can [b][url=/page=dispatch/id=1079028]read here for additional info
 
 https://www.nationstates.net/page=dispatch/id=` + dataIFV.dispatch;
 			message = message.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22').replaceAll('"', '%22').replaceAll('"', '%22');
-			document.body.innerHTML = '<A HREF="https://www.nationstates.net/page=compose_telegram?tgto=' + dataIFV.tg_victims.replaceAll('+', '%2B') + '&is_recruitment_tg=true&recruittype=campaign&recruitregion=region&message=' + message + '">Telegram link.</A><BR/>For WFE Update: <CODE>[color=' + (function(){if(dataIFV.rec == 'For'){return 'green'}else if(dataIFV.rec == 'Against'){return 'red'}else{return 'orange'}})() + ']' + dataIFV.rec + '[/color][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + '][color=8B8000][u]IFV[/u][/color][/url]</CODE><BR/>For IFV list:<TEXTAREA READONLY>' + newCode + '</TEXTAREA>';
+			document.body.innerHTML = '<A HREF="https://www.nationstates.net/page=compose_telegram?tgto=' + dataIFV.tg_victims.replaceAll('+', '%2B') + '&is_recruitment_tg=true&recruittype=campaign&recruitregion=region&message=' + message + '">Telegram link.</A><BR/>For WFE Update: <CODE>[color=' + (function(){if(dataIFV.rec == 'For'){return 'green'}else if(dataIFV.rec == 'Against'){return 'red'}else{return 'orange'}})() + ']' + dataIFV.rec + '[/color][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + '][color=8B8000][u]IFV[/u][/color][/url]</CODE>';
 		}catch(e){
 			alert('Something went wrong.');
 		}

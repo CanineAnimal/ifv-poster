@@ -79,7 +79,7 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 			
 			if(request5.status == 200){
 				var request6 = new XMLHttpRequest();
-				request6.open('PUT', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/', false);
+				request6.open('PUT', 'https://api.jsonbin.io/v3/b/65389fe60574da7622bd5cae/', false);
 				request6.setRequestHeader('Content-Type', 'application/json');
 				request6.send(JSON.stringify(dataIFV))
 				alert('Process complete. You may now close this tab.')

@@ -1,5 +1,5 @@
 var request = new XMLHttpRequest();
-request.open('GET', 'https://api.jsonbin.io/v3/b/6534854c0574da7622bc0472/latest', false);
+request.open('GET', 'https://api.jsonbin.io/v3/b/65389fe60574da7622bd5cae/latest', false);
 request.send(); 
 dataIFV = JSON.parse(request.responseText).record;
 

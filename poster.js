@@ -61,20 +61,22 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 	rmbPost = rmbPost.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
 	
 	var request4 = new XMLHttpRequest();
-	request4.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=prepare', false);
+	request4.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
+	request4.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	request4.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
 	request4.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
 	while(originalTime + 650 > (new Date()).getTime()){}; 
-	request4.send();
+	request4.send('c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=prepare');
 	originalTime = (new Date()).getTime();
 
 	if(request4.status == 200){
 		setTimeout(function(){
 			var request5 = new XMLHttpRequest();
-			request5.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML, false);
+			request5.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
+			request5.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 			request5.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
 			request5.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
-			request5.send();
+			request5.send('c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML);
 			originalTime = (new Date()).getTime();
 			
 			if(request5.status == 200){

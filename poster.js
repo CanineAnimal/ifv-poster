@@ -46,7 +46,7 @@ function postIFV(){
 function postRMB(originalTime){
 	var rmbPost = `Greetings everyone!
 
-There is a new vote in the Security Council:
+There is a new vote in the ` + (function(){if(dataIFV.council == 'SC'){return 'Security Council'}else{return 'General Assembly'}})() + `:
 
 [u]Resolution at Vote:[/u] [b][url=/page=` + dataIFV.council.toLowerCase() + `]` + dataIFV.title + `[/url][/b]
 [u]Vote Recommendation:[/u] [b]` + dataIFV.rec + `[/b]

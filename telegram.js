@@ -22,9 +22,9 @@ function telegram(){
 	request.send();
 	oldCode = request.responseXML.querySelector('TEXT').innerHTML.replace('<![CDATA[', '').replace(']]>', ''); 
 	newCode = oldCode.replace('[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr]', '[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr][tr][td]'
-		+ (new Date()).getUTCFullYear() + '-'
-		+ ((new Date()).getUTCMonth() + 1) + '-'
-		+ (new Date()).getUTCDate() + '[/td][td]'
+		+ (new Date()).getUTCFullYear() /* This script presumably won't be used in the 9th millenium */ + '-'
+		+ ((new Date()).getUTCMonth() + 1).toString().padStart(2, '0') + '-'
+		+ (new Date()).getUTCDate().toString().padStart(2, '0') + '[/td][td]'
 		+ dataIFV.title + '[/td][td]'
 		+ dataIFV.rec
 		+ '[/td][td][url=https://www.nationstates.net/page=dispatch/id=' + dataIFV.dispatch + ']Review[/url][/td][/tr]');

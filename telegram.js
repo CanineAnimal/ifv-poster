@@ -5,8 +5,8 @@ var request3;
 var newCode;
 var oldCode;
 
-var ministerForumName = 'Magecastle'; // This MUST be updated when the Minister changes.
-var ministerNation = 'Magecastle Embassy Building A5';
+var ministerForumName = 'Simone'; // This MUST be updated when the Minister changes.
+var ministerNation = 'Simone Republic';
 var delegate = 'Kaschovia' // Likewise, this MUST be updated when there is a new Delegate.
 
 function telegram(){

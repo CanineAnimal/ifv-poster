@@ -5,9 +5,13 @@ var request3;
 var newCode;
 var oldCode;
 
-var ministerForumName = 'Simone'; // This MUST be updated when the Minister changes.
-var ministerNation = 'Simone Republic';
-var delegate = 'Kaschovia' // Likewise, this MUST be updated when there is a new Delegate.
+var ministerRequest = new XMLHttpRequest();
+ministerRequest.open('GET', 'https://docs.google.com/spreadsheet/ccc?key=1hBUA7i7n5-0RXNbItLDHA1lb_D9rKQp4JJ1hc5InD8k&single=true&output=csv', false);
+ministerRequest.send();
+var rows = ministerRequest.responseText.split('\n');
+var delegate = rows[1].split(',')[2];
+var ministerForumName = rows[2].split(',')[1];
+var ministerNation = rows[2].split(',')[2]; 
 
 function telegram(){
 	var ID;
@@ -21,7 +25,8 @@ function telegram(){
 	request.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?q=dispatch;dispatchid=' + ID + '&user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value, false);
 	request.send();
 	oldCode = request.responseXML.querySelector('TEXT').innerHTML.replace('<![CDATA[', '').replace(']]>', ''); 
-	newCode = oldCode.replace('[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr]', '[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr][tr][td]'
+	newCode = oldCode.replace(/(?=Minister of WA Affairs \[nation\]).*(?=\[\/nation\])/, 'Minister of WA Affairs [nation]' + ministerNation) // Automatically update the Minister's name the first time this tool is used under the new administration
+		.replace('[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr]', '[background-block=#265780][hr][center][b][color=#dfecff]Dispatch[/color][/center][/b][hr][/background-block][/td][/tr][tr][td]'
 		+ (new Date()).getUTCFullYear() + '-' // This script presumably won't be used in the 11th millenium
 		+ ((new Date()).getUTCMonth() + 1).toString().padStart(2, '0') + '-'
 		+ (new Date()).getUTCDate().toString().padStart(2, '0') + '[/td][td]'

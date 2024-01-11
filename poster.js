@@ -1,8 +1,12 @@
 var dispatchID;
 var request2;
 var request3;
+var uaString;
 var IFVtext;
 var dataIFV;
+var founded;
+
+uaString = ''; // uaString is entirely unnecessary if you use a better browser than MS Edge
 
 function postIFV(){
 	IFVtext = `[background-block=#265780][hr][center][floatleft][img]https://forum.thenorthpacific.org/images/dispatches/tnp_header.png[/img][/floatleft][size=200][color=#dfecff]` + (function(){if(dataIFV.council == 'SC'){return 'Security Council '}else{return 'General Assembly '}})() + `Vote Recommendation[/color][/size][/center][hr][center][b][size=125] [/size][color=#dfecff]Part of the[/color] [url=/page=dispatch/id=` + (function(){if(dataIFV.council == 'SC'){return '1947416'}else{return '1947418'}})() + `][color=#94c248]Information for WA Voters[/color][/url] [color=#dfecff]program[/color][size=125] [/size][/b][/center][hr][/background-block]
@@ -18,17 +22,22 @@ function postIFV(){
 	IFVtext = IFVtext.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
 	if(confirm('Confirming that a ' + dataIFV.rec + ' IFV on ' + dataIFV.title + ' will be posted? Click OK below to confirm.\n\nIf you choose to proceed, the process will take about one minute -- do NOT close this tab.')){
 		request2 = new XMLHttpRequest();
-		request2.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=' + document.querySelector('#USER').value + '&c=dispatch&dispatch=add&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext + '&category=3&subcategory=385&mode=prepare', false);
+		request2.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
 		request2.setRequestHeader('X-Password', document.querySelector('#PWD').value);
+		try{
+			request2.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
+		}catch(e){
+			uaString = '&Script by The Ice States (Github%3A https%3A%2F%2Fgithub.com%2FCanineAnimal%2Fifv-poster) in use by ' + document.querySelector('#USER').value
+		}
 		var originalTime = (new Date()).getTime();
-		request2.send();
+		request2.send('?nation=' + document.querySelector('#USER').value + uaString + '&c=dispatch&dispatch=add&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext + '&category=3&subcategory=385&mode=prepare');
 		if(request2.status == 200){
 			request3 = new XMLHttpRequest();
-			request3.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=' + document.querySelector('#USER').value + '&c=dispatch&dispatch=add&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext + '&category=3&subcategory=385&mode=execute&token=' + request2.responseXML.querySelector('SUCCESS').innerHTML, false);
+			request3.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
 			request3.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
 			while((new Date()).getTime() < originalTime + 650){};
 			var originalTime = (new Date()).getTime();
-			request3.send();
+			request3.send('?nation=' + document.querySelector('#USER').value + uaString + '&c=dispatch&dispatch=add&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext + '&category=3&subcategory=385&mode=execute&token=' + request2.responseXML.querySelector('SUCCESS').innerHTML);
 			try{
 				dispatchID = request3.responseXML.querySelector('SUCCESS').innerHTML.split('/page=dispatch/id=')[1].split('"')[0];
 				dataIFV.dispatch = dispatchID;
@@ -63,20 +72,36 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 	var request4 = new XMLHttpRequest();
 	request4.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
 	request4.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	request4.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
+	try{
+		request4.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
+	}catch(e){}
 	request4.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
 	while(originalTime + 650 > (new Date()).getTime()){}; 
-	request4.send('c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=prepare');
+	request4.send('c=rmbpost&nation=' + document.querySelector('#USER').value + uaString + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=prepare');
 	originalTime = (new Date()).getTime();
 
 	if(request4.status == 200){
+		while((new Date()).getTime() < originalTime + 600){};
+		var request5 = new XMLHttpRequest();
+		request5.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?nation=' + document.querySelector('#USER').value + '&q=foundedtime&user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value, false);
+		request5.send();
+	
+		founded = request5.responseXML.querySelector('FOUNDEDTIME').innerHTML;
+		if(founded + 47336400 > (new Date()).getTime()/1000){
+			 var delay = 54000 + 0.000688 * (fd - (new Date()).getTime()/1000)); // Credit to Refuge Isle for researching and publishing NS' rate limit formula
+		}else{
+			var delay = 21000;
+		}
+		
 		setTimeout(function(){
 			var request5 = new XMLHttpRequest();
 			request5.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
 			request5.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			request5.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
+			try{
+				request5.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
+			}catch(e){}
 			request5.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
-			request5.send('c=rmbpost&nation=' + document.querySelector('#USER').value + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML);
+			request5.send('c=rmbpost&nation=' + document.querySelector('#USER').value + uaString + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML);
 			originalTime = (new Date()).getTime();
 			
 			if(request5.status == 200){
@@ -88,7 +113,7 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 			}else{
 				alert('Something went wrong.');
 			}
-		}, 30000);
+		}, delay);
 	}else{
 		alert('Something went wrong.');
 	}

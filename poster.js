@@ -88,7 +88,7 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 	
 		founded = request5.responseXML.querySelector('FOUNDEDTIME').innerHTML;
 		if(founded + 47336400 > (new Date()).getTime()/1000){
-			 var delay = 54000 + 0.000688 * (fd - (new Date()).getTime()/1000)); // Credit to Refuge Isle for researching and publishing NS' rate limit formula
+			 var delay = 54000 + 0.000688 * (fd - (new Date()).getTime()/1000); // Credit to Refuge Isle for researching and publishing NS' rate limit formula
 		}else{
 			var delay = 21000;
 		}

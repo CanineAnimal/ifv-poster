@@ -94,21 +94,21 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 		}
 		
 		setTimeout(function(){
-			var request5 = new XMLHttpRequest();
-			request5.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
-			request5.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			var request6 = new XMLHttpRequest();
+			request6.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
+			request6.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 			try{
-				request5.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
+				request6.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
 			}catch(e){}
-			request5.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
-			request5.send('c=rmbpost&nation=' + document.querySelector('#USER').value + uaString + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML);
+			request6.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
+			request6.send('c=rmbpost&nation=' + document.querySelector('#USER').value + uaString + '&region=the_north_pacific&c=rmbpost&text=' + rmbPost + '&mode=execute&token=' + request4.responseXML.querySelector('SUCCESS').innerHTML);
 			originalTime = (new Date()).getTime();
 			
-			if(request5.status == 200){
-				var request6 = new XMLHttpRequest();
-				request6.open('PUT', 'https://api.jsonbin.io/v3/b/65389fe60574da7622bd5cae/', false);
-				request6.setRequestHeader('Content-Type', 'application/json');
-				request6.send(JSON.stringify(dataIFV))
+			if(request6.status == 200){
+				var request7 = new XMLHttpRequest();
+				request7.open('PUT', 'https://api.jsonbin.io/v3/b/65389fe60574da7622bd5cae/', false);
+				request7.setRequestHeader('Content-Type', 'application/json');
+				request7.send(JSON.stringify(dataIFV))
 				alert('Process complete. You may now close this tab.')
 			}else{
 				alert('Something went wrong.');

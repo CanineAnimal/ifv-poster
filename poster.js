@@ -19,7 +19,7 @@ function postIFV(){
 [size=150][color=#265780][url=` + dataIFV.thread + `]Join our discussion![/url][/color][/size]
 [background-block=#265780][hr][center][img]https://forum.thenorthpacific.org/images/ifv/tnp_wa_voting_footer.png[/img]
 [b][color=#dfecff]Sponsored by the[/color] [url=http://forum.thenorthpacific.org/forum/39609/][color=#94c248]Ministry of World Assembly Affairs[/color][/url] [color=#dfecff]of The North Pacific.[/color][/b][/center][hr][/background-block]`;
-	IFVtext = IFVtext.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
+	IFVtext = IFVtext.replaceAll('=', '%3D').replaceAll(',', '%2C').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
 	if(confirm('Confirming that a ' + dataIFV.rec + ' IFV on ' + dataIFV.title + ' will be posted? Click OK below to confirm.\n\nIf you choose to proceed, the process will take about one minute -- do NOT close this tab.')){
 		request2 = new XMLHttpRequest();
 		request2.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
@@ -27,7 +27,7 @@ function postIFV(){
 		try{
 			request2.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
 		}catch(e){
-			uaString = '&Script by The Ice States (Github%3A https%3A%2F%2Fgithub.com%2FCanineAnimal%2Fifv-poster) in use by ' + document.querySelector('#USER').value
+			uaString = '&user_agent=Script by The Ice States (Github%3A https%3A%2F%2Fgithub.com%2FCanineAnimal%2Fifv-poster) in use by ' + document.querySelector('#USER').value
 		}
 		var originalTime = (new Date()).getTime();
 		request2.send('nation=' + document.querySelector('#USER').value + uaString + '&c=dispatch&dispatch=add&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext + '&category=3&subcategory=385&mode=prepare');
@@ -67,7 +67,7 @@ Additionally, [b]you should also vote in the forum thread[/b]. The forum tally d
 
 https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 	
-	rmbPost = rmbPost.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
+	rmbPost = rmbPost.replaceAll('=', '%3D').replaceAll(',', '%2C').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
 	
 	var request4 = new XMLHttpRequest();
 	request4.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);

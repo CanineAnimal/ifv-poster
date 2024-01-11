@@ -22,22 +22,22 @@ function postIFV(){
 	IFVtext = IFVtext.replaceAll('=', '%3D').replaceAll(',', '%2C').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22');
 	if(confirm('Confirming that a ' + dataIFV.rec + ' IFV on ' + dataIFV.title + ' will be posted? Click OK below to confirm.\n\nIf you choose to proceed, the process will take about one minute -- do NOT close this tab.')){
 		request2 = new XMLHttpRequest();
-		request2.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
+		request2.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github%3A https%3A%2F%2Fgithub.com%2FCanineAnimal%2Fifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=' + document.querySelector('#USER').value + uaString + '&c=dispatch&dispatch=add&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext + '&category=3&subcategory=385&mode=prepare', false);
 		request2.setRequestHeader('X-Password', document.querySelector('#PWD').value);
 		try{
 			request2.setRequestHeader('User-Agent', 'Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value);
 		}catch(e){
-			uaString = '&user_agent=Script by The Ice States (Github%3A https%3A%2F%2Fgithub.com%2FCanineAnimal%2Fifv-poster) in use by ' + document.querySelector('#USER').value
+			uaString = '&user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value;
 		}
 		var originalTime = (new Date()).getTime();
-		request2.send('nation=' + document.querySelector('#USER').value + uaString + '&c=dispatch&dispatch=add&category=3&subcategory=385&mode=prepare&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext);
+		request2.send()
 		if(request2.status == 200){
 			request3 = new XMLHttpRequest();
-			request3.open('POST', 'https://www.nationstates.net/cgi-bin/api.cgi', false);
+			request3.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?user_agent=Script by The Ice States (Github%3A https%3A%2F%2Fgithub.com%2FCanineAnimal%2Fifv-poster) in use by ' + document.querySelector('#USER').value + '&nation=' + document.querySelector('#USER').value + uaString + '&c=dispatch&dispatch=add&category=3&subcategory=385&mode=execute&token=' + request2.responseXML.querySelector('SUCCESS').innerHTML + '&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext, false);
 			request3.setRequestHeader('X-Pin', request2.getResponseHeader('X-Pin'));
 			while((new Date()).getTime() < originalTime + 650){};
 			var originalTime = (new Date()).getTime();
-			request3.send('nation=' + document.querySelector('#USER').value + uaString + '&c=dispatch&dispatch=add&category=3&subcategory=385&mode=execute&token=' + request2.responseXML.querySelector('SUCCESS').innerHTML + '&title=' + dataIFV.titleRec + ' ' + dataIFV.council + ' resolution ' + dataIFV.title + '&text=' + IFVtext);
+			request3.send();
 			try{
 				dispatchID = request3.responseXML.querySelector('SUCCESS').innerHTML.split('/page=dispatch/id=')[1].split('"')[0];
 				dataIFV.dispatch = dispatchID;

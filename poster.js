@@ -86,7 +86,7 @@ https://www.nationstates.net/page=dispatch/id=` + dispatchID;
 		request5.open('GET', 'https://www.nationstates.net/cgi-bin/api.cgi?nation=' + document.querySelector('#USER').value + '&q=foundedtime&user_agent=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value, false);
 		request5.send();
 	
-		founded = request5.responseXML.querySelector('FOUNDEDTIME').innerHTML;
+		founded = Number.parseInt(request5.responseXML.querySelector('FOUNDEDTIME').innerHTML);
 		if(founded + 47336400 > (new Date()).getTime()/1000){
 			 var delay = 54000 + 0.000688 * (founded - (new Date()).getTime()/1000); // Credit to Refuge Isle for researching and publishing NS' rate limit formula
 		}else{

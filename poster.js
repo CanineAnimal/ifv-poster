@@ -43,7 +43,7 @@ function postIFV(){
 				dataIFV.dispatch = dispatchID;
 				postRMB(originalTime);
 			}catch(e){
-				alert('Something went wrong.');
+				alert(e.message);
 			}
 		}else{
 			alert('Something went wrong.');

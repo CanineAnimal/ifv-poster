@@ -10,8 +10,10 @@ ministerRequest.open('GET', 'https://docs.google.com/spreadsheet/ccc?key=1hBUA7i
 ministerRequest.send();
 var rows = ministerRequest.responseText.split('\n');
 var delegate = rows[1].split(',')[2];
-var ministerForumName = rows[2].split(',')[1];
-var ministerNation = rows[2].split(',')[2]; 
+/*var ministerForumName = rows[2].split(',')[1];
+var ministerNation = rows[2].split(',')[2];*/
+var ministerForumName = 'Simone';
+var ministerNation = 'Simone Republic'; // On Simone's request his name has been temporarily hardcoded
 
 function telegram(){
 	var ID;
@@ -63,7 +65,7 @@ Please find below another volume of the Information for World Assembly voters pr
 [u]` + (function(){if(dataIFV.rec == 'For' || dataIFV.rec == 'Against'){return 'Why vote ' + dataIFV.rec.toLowerCase()}else{return 'Information for Voters:'}})() + `[/u]
 ` + dataIFV.IFV + `
 
-[b]Please endorse Delegate [nation=short]` + delegate + `[/nation][/b], if you have not already done so. The more endorsements, the more votes The North Pacific has, and the stronger our voice in the World Assembly is!
+[b]Please endorse serving Delegate [nation=short]` + delegate + `[/nation][/b], if you have not already done so. The more endorsements, the more votes The North Pacific has, and the stronger our voice in the World Assembly is!
 [spoiler=Help wanted in the Ministry of World Assembly Affairs!]
 All of us in the Ministry of World Assembly Affairs are proud of the work we accomplish in the Ministry. If you are interested in joining the effort, if you are interested in getting more involved in the World Assembly, possibly as an author or one of our staff putting together information for voters like yourself, then join the Ministry! We want both people who are eager to learn and people who already know their way around the World Assembly and can help us do our job even better. Joining the Ministry of World Assembly Affairs is a great way to get more involved in The North Pacific community.
 If you're interested in getting involved, please contact the Minister of World Assembly Affairs, either by personal message on the forums (username: [b]` + ministerForumName + `[/b]) or by telegram (nation: [b][nation=short]` + ministerNation + `[/nation][/b]).

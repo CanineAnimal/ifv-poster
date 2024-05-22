@@ -10,10 +10,10 @@ ministerRequest.open('GET', 'https://docs.google.com/spreadsheet/ccc?key=1hBUA7i
 ministerRequest.send();
 var rows = ministerRequest.responseText.split('\n');
 var delegate = rows[1].split(',')[2];
-/*var ministerForumName = rows[2].split(',')[1];
-var ministerNation = rows[2].split(',')[2];*/
-var ministerForumName = 'Simone';
-var ministerNation = 'Simone Republic'; // On Simone's request his name has been temporarily hardcoded
+var ministerForumName = rows[2].split(',')[1];
+var ministerNation = rows[2].split(',')[2];
+var ministerForumName = rows[2].split(',')[1];
+var ministerNation = rows[2].split(',')[2]; 
 
 function telegram(){
 	var ID;

@@ -80,7 +80,7 @@ Additionally, you can [b][url=/page=dispatch/id=1079028]read here for further in
 
 https://www.nationstates.net/page=dispatch/id=` + dataIFV.dispatch;
 			message = message.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22').replaceAll('"', '%22').replaceAll('"', '%22');
-			document.body.innerHTML = '<A HREF="https://www.nationstates.net/page=compose_telegram?tgto=' + dataIFV.tg_victims.replaceAll('+', '%2B') + '&is_recruitment_tg=true&recruittype=campaign&recruitregion=region&message=' + message + '">Telegram link.</A><BR/><STRONG>Make sure to update the WFE!</STRONG>';
+			document.body.innerHTML = '<A HREF="https://www.nationstates.net/page=compose_telegram?tgto=' + dataIFV.tg_victims.replaceAll('+', '%2B') + '&is_recruitment_tg=true&recruittype=campaign&recruitregion=region&message=' + message + '&generated_by=Script by The Ice States (Github: https://github.com/CanineAnimal/ifv-poster) in use by ' + document.querySelector('#USER').value + '">Telegram link.</A><BR/><STRONG>Make sure to update the WFE!</STRONG>';
 		}catch(e){
 			alert('Something went wrong.');
 		}

@@ -72,7 +72,7 @@ If you're interested in getting involved, please contact the Minister of World A
 
 We look forward to hearing from you soon![/spoiler]
 [spoiler=Other information]
-The Delegate casts the regional vote after consulting the results of the forum voting thread linked above, as well as votes held on the RMB of the region [region]TNP Gameside Voting Box[/region]. All World Assembly nations in The North Pacific can vote and discuss there, so make sure to do so!
+The Delegate casts the regional vote after consulting the results of the forum voting thread linked above. All World Assembly nations in The North Pacific can vote and discuss there, so make sure to do so!
 
 Additionally, you can [b][url=/page=dispatch/id=1079028]read here for further information on why and how to vote on World Assembly resolutions[/url][/b].[/spoiler]
 

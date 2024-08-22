@@ -76,7 +76,7 @@ The Delegate casts the regional vote after consulting the results of the forum v
 
 Additionally, you can [b][url=/page=dispatch/id=1079028]read here for further information on why and how to vote on World Assembly resolutions[/url][/b].[/spoiler]
 
-[i]Sent on behalf of the Ministry of World Assembly Affairs. If you have questions about the above, or if you no longer wish to receive these telegrams, please contact Minister of World Assembly Affairs [nation=short]` + ministerNation + `[/nation].[/i]
+[i]Sent on behalf of the Ministry of World Assembly Affairs. To unsubscribe, please contact Minister of World Assembly Affairs [nation=short]` + ministerNation + `[/nation].[/i]
 
 https://www.nationstates.net/page=dispatch/id=` + dataIFV.dispatch;
 			message = message.replaceAll('=', '%3D').replaceAll('#', '%23').replaceAll('&', '%26').replaceAll('?', '%3F').replaceAll('=', '%3D').replaceAll(';', '%3B').replaceAll('\n', '%0D%0A').replaceAll('’', '\'').replaceAll('“', '%22').replaceAll('”', '%22').replaceAll('"', '%22').replaceAll('"', '%22');
